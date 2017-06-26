@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>table</title>
+	<style>
+		table tr td{
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var inp1 = document.getElementById('inp1');
+			var inp2 = document.getElementById('inp2');
+			var otab = document.getElementById('tab');
+			var oTrs = otab.tBodies[0].rows;
+			var oldColor = null;
+			inp1.onclick = function(){
+				/*otab.getElementsByTagName('tbody')[0].getElementsByTagName('tr')[0].style.display='none';*/
+				
+				otab.tBodies[0].rows[0].style.display='none';
+			}
+			inp2.onclick = function(){
+				otab.getElementsByTagName('tbody')[0].getElementsByTagName('tr')[0].style.display='table-row';
+			}
+			
+			for(var i = 0;i < oTrs.length;i++){
+				if(i%2 == 0){
+					oTrs[i].style.background = "#ddd";
+				}
+				oTrs[i].onmouseover = function(){
+					oldColor = this.style.backgroundColor;
+					this.style.background = 'yellow';
+				}
+				oTrs[i].onmouseout = function(){
+					this.style.background = oldColor;
+				}
+			}
+			
+		}
+	</script>
+</head>
+<input type="button" name="" id="inp1" value="hide">
+<input type="button" name="" id="inp2" value="show">
+
+<body>
+	<table style="text-align:center;border-collapse:collapse" border="1px solid #000" width="500px" cellspacing="0" id="tab">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Opration</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>wang</td>
+				<td>14</td>
+				<td>collapase</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>xu</td>
+				<td>14</td>
+				<td>collapase</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>zhang</td>
+				<td>14</td>
+				<td>collapase</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<tr>
+				<td>foot</td>
+				<td>ggg</td>
+				<td>14</td>
+				<td>collapase</td>
+			</tr>
+		</tfoot>
+	</table>
+</body>
+</html>

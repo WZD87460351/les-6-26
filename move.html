@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>move</title>
+	<style>
+		#box{
+			height: 100px;
+			width: 100px;
+			background: red;
+			position: absolute;
+			left: 0;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var obtn = document.getElementById('btn');
+			var obtn2 = document.getElementById('btn2');
+			var obox = document.getElementById('box');
+			var time = null;
+			var speed = null;
+			obtn2.onclick = function(){
+				speed = -5;
+				clearInterval(time);
+				move();
+				if(parseInt(obox.style.left) <= 0){
+					clearInterval(time);
+				}
+			}
+			obtn.onclick = function(){
+				//alert(window.getComputedStyle(obox,false).left);//可以获取元素头部css样式的left值；
+				//alert(obox.style.left);//只能获取行间的left值；
+				//obox.style.left = obox.offsetLeft + 10 +'px';
+				speed = 5;
+				clearInterval(time);
+				move();
+				
+				
+				/*var sty_left = getstyle(obox,'left');
+				alert(sty_left);
+				
+				function getstyle(ele,attr){
+					if(window.getComputedStyle){
+						return window.getComputedStyle(ele,false)[attr];
+					}else{
+						return ele.currentStyle[attr];
+					}
+				}*/
+				
+			}
+			function move(){
+				time = setInterval(function(){
+					
+					if(parseInt(obox.style.left) == 300){
+						clearInterval(time);
+					}else{
+						obox.style.left = obox.offsetLeft + speed +'px';
+					}
+				},30)
+			}
+		}
+	</script>
+</head>
+<body>
+	<button id="btn">moveright</button>
+	<button id="btn2">moveleft</button>
+	<div id="box"></div>
+<!--	<div id="box" style="position:absolute;left:8px;height:100px;width:100px;background:red;"></div>-->
+</body>
+</html>

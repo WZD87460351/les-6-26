@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>table2</title>
+	<script>
+		window.onload = function(){
+			var inp1 = document.getElementById('inp1');
+			var inp2 = document.getElementById('inp2');
+			var btn = document.getElementById('btn')
+			var otab = document.getElementById('tab');
+			var oTrs = otab.tBodies[0].rows;
+			var newid =  oTrs.length;
+			var oldColor = null;
+			//add row color 
+			for(var i = 0;i < oTrs.length;i++){
+				if(i%2 == 0){
+					oTrs[i].style.background = "#ddd";
+				}
+				oTrs[i].onmouseover = function(){
+					oldColor = this.style.backgroundColor;
+					this.style.background = 'yellow';
+				}
+				oTrs[i].onmouseout = function(){
+					this.style.background = oldColor;
+				}
+			}
+			//click and add row
+			btn.onclick = function(){
+				var oname = inp1.value;
+				var oage = inp2.value;
+				var otr = document.createElement('tr');
+				
+				var otd = document.createElement('td');
+				otd.innerHTML = ++newid;
+				otr.appendChild(otd);
+				
+				var otd = document.createElement('td');
+				otd.innerHTML = oname
+				otr.appendChild(otd);
+				
+				var otd = document.createElement('td');
+				otd.innerHTML = oage;
+				otr.appendChild(otd);
+				
+				var otd = document.createElement('td');
+				otd.innerHTML = '<a href="javascript:;">delete</a>'
+				otr.appendChild(otd);
+				
+				otab.tBodies[0].appendChild(otr);
+				
+				for(var i = 0;i < oTrs.length;i++){
+					if(i%2 == 0){
+						oTrs[i].style.background = "#ddd";
+					}
+					oTrs[i].onmouseover = function(){
+						oldColor = this.style.backgroundColor;
+						this.style.background = 'yellow';
+					}
+					oTrs[i].onmouseout = function(){
+						this.style.background = oldColor;
+					}
+			 }
+				//delete row
+				var odelete = otab.tBodies[0].getElementsByTagName('a');
+				for(var j = 0;j < odelete.length;j++){
+					odelete[j].onclick = function(){
+						otab.tBodies[0].removeChild(this.parentNode.parentNode);
+					}
+				}
+			}
+			
+			var odelete = otab.tBodies[0].getElementsByTagName('a');
+			for(var j = 0;j < odelete.length;j++){
+				odelete[j].onclick = function(){
+					otab.tBodies[0].removeChild(this.parentNode.parentNode);
+				}
+			}
+			
+			
+			
+		}
+	</script>
+</head>
+<body>
+	name:<input type="text" name="" id="inp1">
+	age:<input type="text" name="" id="inp2">
+	<input type="button" name="" id="btn" value="add">
+	<table style="text-align:center;border-collapse:collapse" border="1px solid #000" width="500px" cellspacing="0" id="tab">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Opration</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>wang</td>
+				<td>14</td>
+				<td><a href="javascript:;">delete</a></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>xu</td>
+				<td>14</td>
+				<td><a href="javascript:;">delete</a></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>zhang</td>
+				<td>14</td>
+				<td><a href="javascript:;">delete</a></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<tr>
+				<td>foot</td>
+				<td>ggg</td>
+				<td>14</td>
+				<td>collapase</td>
+			</tr>
+		</tfoot>
+	</table>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>search</title>
+	<script>
+		window.onload = function(){
+			var inp1 = document.getElementById('inp1');
+			var osearch = document.getElementById('btn')
+			var otab = document.getElementById('tab');
+			var oTrs = otab.tBodies[0].rows;
+			
+			osearch.onclick = function(){
+				var inp1value = inp1.value.toLowerCase();
+				var inp1valuedel = inp1value.trim();
+				for(var i = 0;i < oTrs.length;i++){
+					var val = oTrs[i].cells[1].innerHTML.toLowerCase();
+					oTrs[i].style.background = '';
+					if(inp1valuedel == val){
+						oTrs[i].style.background = 'yellow';
+					}
+				}
+			}
+			
+			
+			
+			
+			
+		}
+	</script>
+</head>
+<body>
+	<input type="text" name="" id="inp1">
+	<input type="button" name="" id="btn" value="search">
+	<table style="text-align:center;border-collapse:collapse" border="1px solid #000" width="500px" cellspacing="0" id="tab">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Opration</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>wang</td>
+				<td>14</td>
+				<td><a href="javascript:;">delete</a></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>xu</td>
+				<td>14</td>
+				<td><a href="javascript:;">delete</a></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>zhang</td>
+				<td>14</td>
+				<td><a href="javascript:;">delete</a></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<tr>
+				<td>foot</td>
+				<td>ggg</td>
+				<td>14</td>
+				<td>collapase</td>
+			</tr>
+		</tfoot>
+	</table>
+</body>
+</html>
